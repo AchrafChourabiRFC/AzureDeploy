@@ -30,3 +30,8 @@ jobs:
        uses: azure/login@v1
        with:
          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
+#azure create a resource group
+     - name: Create Azure resource group
+       if: success()
+       run: |
+         az group create --location ${{env.AZURE_LOCATION}} --name ${{env.AZURE_RESOURCE_GROUP}} --subscription ${{secrets.SUBSCRIPTION_ID}}
