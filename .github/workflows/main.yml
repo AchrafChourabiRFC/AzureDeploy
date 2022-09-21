@@ -13,3 +13,6 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
+        # action.yml
+      - name: docker conainter
+        run: docker build . --file Dockerfile --tag my-new-image:$(date +%s)
